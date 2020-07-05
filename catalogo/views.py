@@ -20,5 +20,5 @@ class CarroView(viewsets.ModelViewSet):
     serializer_class = CarroSerializer
     filter_backends = (filters.SearchFilter, 
                         filters.OrderingFilter)
-    search_fields = ('precio')
+    search_fields = ('marca','modelo')
     ordering_fields = ('precio',)
