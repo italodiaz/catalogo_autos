@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import TipoCarro, Marca, Modelo
+from catalogo.models import Marca, TipoCarro, Modelo
 
 # Register your models here.
 
@@ -18,4 +18,4 @@ class ModeloAdmin(admin.ModelAdmin):
 
 admin.site.register(TipoCarro, TipoCarroAdmin)
 admin.site.register(Marca, MarcaAdmin)
-admin.site.register(ModeloAdmin, ModeloAdmin)
+admin.site.register(Modelo, ModeloAdmin)
