@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} Crear Carro {% endblock %}
+
+{% block content %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="row">            
+            <div class="col-sm-9">
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        {{ form.marca.label }}
+                    </div>
+                    <div class="col-sm-8">
+                        {{ form.marca }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        {{ form.modelo.label }}
+                    </div>
+                    <div class="col-sm-8">
+                        {{ form.modelo }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        {{ form.tipo_carro.label }}
+                    </div>
+                    <div class="col-sm-8">
+                        {{ form.tipo_carro }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        {{ form.año.label }}
+                    </div>
+                    <div class="col-sm-8">
+                        {{ form.año }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        {{ form.tipo_combustible.label }}
+                    </div>
+                    <div class="col-sm-8">
+                        {{ form.tipo_combustible }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        {{ form.peso.label }}
+                    </div>
+                    <div class="col-sm-8">
+                        {{ form.peso }}
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        {{ form.precio.label }}
+                    </div>
+                    <div class="col-sm-8">
+                        {{ form.precio }}
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit">Crear</button>
+                <a class="btn btn-info" href="{% url 'catalogo_web:list.carro' %}">Cancelar</a>
+            </div>
+        </div>
+    </form>
+{% endblock %}

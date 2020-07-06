@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, CreateView, UpdateView, DeleteView
-from catalogo.models import Modelo, Marca, TipoCarro
-from .forms import ModeloForm, MarcaForm, TipoCarroForm
+from catalogo.models import Modelo, Marca, TipoCarro, Carro
+from .forms import ModeloForm, MarcaForm, TipoCarroForm, CarroForm
 from django.urls import reverse_lazy
 
 # Create your views here.
@@ -97,4 +97,34 @@ class DeleteTipoCarro(DeleteView):
         tipo_carro = TipoCarro.objects.get(id=self.kwargs.get('pk'))
         context = super(DeleteTipoCarro, self).get_context_data(**kwargs)
         context['tipo_carro'] = tipo_carro
+        return context
+
+class ListCarro(ListView):
+    model = Carro
+    template_name = 'catalogo_web/carro/list_carro.html'
+    queryset = Carro.objects.all()
+    context_object_name = 'carros'
+
+class CreateCarro(CreateView):
+    model = Carro
+    form_class = CarroForm
+    template_name = 'catalogo_web/carro/create_carro.html'
+    success_url = reverse_lazy('catalogo_web:list.carro')
+
+class UpdateCarro(UpdateView):
+    model = Carro
+    form_class = CarroForm
+    template_name = 'catalogo_web/carro/update_carro.html'
+    success_url = reverse_lazy('catalogo_web:list.carro')
+
+class DeleteCarro(DeleteView):
+    model = Carro
+    form_class = CarroForm
+    template_name = 'catalogo_web/carro/delete_carro.html'
+    success_url = reverse_lazy('catalogo_web:list.carro')
+    
+    def get_context_data(self, **kwargs):
+        carro = Carro.objects.get(id=self.kwargs.get('pk'))
+        context = super(DeleteCarro, self).get_context_data(**kwargs)
+        context['carro'] = carro
         return context

@@ -27,7 +27,7 @@ class Carro(models.Model):
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     peso = models.DecimalField(max_digits=10, decimal_places=2)
     tipo_combustible = models.CharField(max_length=100) 
-    año = models.IntegerField()    
+    año = models.IntegerField()
     marca = models.ForeignKey(Marca, on_delete=models.CASCADE)
     modelo = models.ForeignKey(Modelo, on_delete=models.CASCADE)
     tipo_carro = models.ForeignKey(TipoCarro, on_delete=models.CASCADE)

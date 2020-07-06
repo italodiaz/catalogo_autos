@@ -17,6 +17,11 @@ class ModeloSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class CarroSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = '__all__'
+        model = Carro
+
+class CatalogoSerializer(serializers.ModelSerializer):
     marca = MarcaSerializer(many=False)
     tipo_carro = TipoCarroSerializer(many=False)
     modelo = ModeloSerializer(many=False)
