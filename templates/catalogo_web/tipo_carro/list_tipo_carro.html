@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %} Listar Tipos de carro {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <h3 class="one">Listado</h3>
+        </div>
+        <div class="col-autor">
+            <a class="btn btn-primary pull-right" href="{% url 'catalogo_web:create.tipo_carro' %}">
+                <i class="fa fa-add"></i> Crear Tipo de carro
+            </a>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tipo_carro in tipo_carros %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ tipo_carro.nombre }}</td>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                            <a class="btn btn-warning" href="{% url 'catalogo_web:update.tipo_carro' tipo_carro.id %}">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a class="btn btn-danger" href="{% url 'catalogo_web:delete.tipo_carro' tipo_carro.id %}">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

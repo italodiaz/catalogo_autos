@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %} Listar Carros {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <h3 class="one">Listado</h3>
+        </div>
+        <div class="col-autor">
+            <a class="btn btn-primary pull-right" href="{% url 'catalogo_web:create.carro' %}">
+                <i class="fa fa-add"></i> Crear Carro
+            </a>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Tipo de carro</th>
+                <th>Año</th>
+                <th>Tipo de combustible</th>
+                <th>Peso</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for carro in carros %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ carro.marca.nombre }}</td>
+                    <td>{{ carro.modelo.nombre }}</td>
+                    <td>{{ carro.tipo_carro.nombre }}</td>
+                    <td>{{ carro.año }}</td>
+                    <td>{{ carro.tipo_combustible }}</td>
+                    <td>{{ carro.peso }}</td>
+                    <td>{{ carro.precio }}</td>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                            <a class="btn btn-warning" href="{% url 'catalogo_web:update.carro' carro.id %}">
+                                <i class="fa fa-edit"></i>
+                            </a>
+                            <a class="btn btn-danger" href="{% url 'catalogo_web:delete.carro' carro.id %}">
+                                <i class="fa fa-trash"></i>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
